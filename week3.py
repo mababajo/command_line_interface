@@ -15,3 +15,27 @@ test_bank = [
         "correct_answer": "C"
     }
 ]
+score = 0
+
+for q in quiz:
+    print("\n" + q["question"])
+    for option in q["options"]:
+        print(option)
+    
+    answer = input("Your answer (A/B/C): ").strip().upper()
+    
+    if answer == q["correct_answer"]:
+        print("Correct!")
+        score += 1
+    else:
+        print(f"Wrong! The correct answer was {q['correct_answer']}.")
+
+def final_result(score, total_questions):
+    percentage = (score / total_questions) * 100
+    print(f"\nYour final score: {score}/{total_questions} ({percentage:.2f}%)")
+    if percentage >= 50:
+        print("Congratulations! You passed the quiz.")
+    else:
+        print("Sorry! You failed the quiz.")
+
+final_result(score, len(quiz))
